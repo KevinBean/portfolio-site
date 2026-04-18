@@ -758,6 +758,9 @@ body,html.theme-eos body,html.theme-void-dark body,html.theme-warm-dark body,htm
 .contact a{font-family:var(--p-mono);font-size:13px;color:var(--p-text-m);text-decoration:none;padding:12px 28px;border:1px solid var(--p-border);border-radius:8px;transition:all 0.2s;letter-spacing:0.02em}
 .contact a:hover{border-color:var(--p-blue);color:var(--p-blue)}
 .footer{text-align:center;padding:20px;font-size:11px;color:var(--p-text-m);font-family:var(--p-mono);letter-spacing:0.04em;border-top:1px solid var(--p-border)}
+.footer .cross-site-links{display:block;margin-bottom:8px}
+.footer .cross-site-links a{color:var(--p-text-m);text-decoration:none;transition:color 0.2s}
+.footer .cross-site-links a:hover{color:var(--p-text-h)}
 
 /* === DETAIL PANEL === */
 .dp{position:fixed;inset:0;z-index:200;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.15,1);pointer-events:none}
@@ -903,7 +906,7 @@ body,html.theme-eos body,html.theme-void-dark body,html.theme-warm-dark body,htm
   </div>
 </section>
 
-<div class="footer">&copy; 2026 Bin Bian &middot; Built with EmptyOS</div>
+<div class="footer"><span class="cross-site-links"><a href="https://binbian.net">Bin Bian's Site</a> &middot; <a href="https://eos.binbian.net">EmptyOS</a></span>&copy; 2026 Bin Bian &middot; Built with EmptyOS</div>
 
 <!-- Detail Panel -->
 <div class="dp" id="dp">
