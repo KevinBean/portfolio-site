@@ -2722,10 +2722,11 @@ window.goFilter=function(cat){
   if(f)activeFilter=f;
 })();
 
-// Theme toggle
+// Theme toggle — respect EmptyOS global light theme when user hasn't set a per-site override
 (function(){
   var saved=localStorage.getItem('p-theme');
-  if(saved==='light')document.documentElement.classList.add('light');
+  var globalLight=/\btheme-(soft-light|light|paper|solar)\b/.test(document.documentElement.className);
+  if(saved==='light' || (saved===null && globalLight))document.documentElement.classList.add('light');
   updateThemeIcon();
 })();
 window.toggleTheme=function(){
