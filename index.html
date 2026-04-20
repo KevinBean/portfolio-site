@@ -933,7 +933,7 @@ body,html.theme-eos body,html.theme-void-dark body,html.theme-warm-dark body,htm
 
 <!-- Hero -->
 <section class="hero" id="hero">
-  <div class="hero-sup">AI & MACHINE LEARNING &BULL; DATA SCIENCE & ANALYTICS &BULL; ENGINEERING & MODELLING &BULL; DIGITAL TRANSFORMATION & BA</div>
+  <div class="hero-sup">AI & MACHINE LEARNING &bull; DATA SCIENCE & ANALYTICS &bull; ENGINEERING & MODELLING &bull; DIGITAL TRANSFORMATION & BA</div>
   <h1>I build tools that make energy infrastructure smarter</h1>
   <p class="hero-sub">15 years designing high-voltage power systems. Now building AI-powered engineering tools, data pipelines, and digital twins for Australia's electricity networks.</p>
   <div class="hero-stats"><div class="hero-stat"><div class="val"><em>15</em></div><div class="lbl">YEARS IN ENERGY</div></div>
@@ -1019,6 +1019,21 @@ var EOS_UI = {
 
     // Escape HTML
     esc: function(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; },
+
+    // Strip markdown noise so TTS reads prose, not punctuation. Collapses fenced
+    // code blocks to a short marker (too long to speak verbatim), flattens inline
+    // code to plain text, drops heading/bold/italic chars, normalises newlines.
+    // Used by apps/assistant speakText and the hands-free overlay — extracted here
+    // because both were verbatim copies of the same six regex replacements.
+    stripMarkdownForTts: function(text) {
+        return String(text || '')
+            .replace(/```[\s\S]*?```/g, '(code block)')
+            .replace(/`[^`]+`/g, function(m) { return m.slice(1, -1); })
+            .replace(/[#*_~\[\]]/g, '')
+            .replace(/\n{2,}/g, '. ')
+            .replace(/\n/g, ' ')
+            .trim();
+    },
 
     // Tab switching — works with .eos-tab buttons and .eos-tab-content panels.
     // Usage 1 (array): EOS_UI.switchTab(['log','history','calendar'], 'history')
