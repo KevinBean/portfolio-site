@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -937,14 +937,14 @@ body,html.theme-eos body,html.theme-void-dark body,html.theme-warm-dark body,htm
   <h1>I build tools that make energy infrastructure smarter</h1>
   <p class="hero-sub">15 years across power systems — design, analysis, and operations from distribution to EHV transmission. Now building AI-powered engineering tools, data pipelines, and digital twins for Australia's electricity networks.</p>
   <div class="hero-stats"><div class="hero-stat"><div class="val"><em>15</em></div><div class="lbl">YEARS IN ENERGY</div></div>
+<div class="hero-stat"><div class="val"><em>5</em></div><div class="lbl">YEARS DEV EXP.</div></div>
 <div class="hero-stat"><div class="val"><em>7</em></div><div class="lbl">CN PATENTS</div></div>
 <div class="hero-stat"><div class="val"><em>10</em></div><div class="lbl">PUBLICATIONS</div></div>
-<div class="hero-stat"><div class="val"><em>5</em></div><div class="lbl">YEARS DEV EXP.</div></div>
 </div>
   <div class="hero-domains" id="heroDomains"><a class="hero-domain" data-f="ai" onclick="goFilter('ai');return false" href="#projects"><h3>AI & Machine Learning</h3><div class="hero-domain-count" id="hd-ai-count">4 projects</div><div class="hero-domain-tags">LLM · prompt engineering · evaluation pipelines · chatbots · RAG</div><div class="arrow">View projects &rarr;</div></a>
 <a class="hero-domain" data-f="data-science" onclick="goFilter('data-science');return false" href="#projects"><h3>Data Science & Analytics</h3><div class="hero-domain-count" id="hd-dat-count">4 projects</div><div class="hero-domain-tags">pandas · scipy · time series · forecasting · statistical analysis</div><div class="arrow">View projects &rarr;</div></a>
 <a class="hero-domain" data-f="engineering" onclick="goFilter('engineering');return false" href="#projects"><h3>Engineering & Modelling</h3><div class="hero-domain-count" id="hd-eng-count">3 projects</div><div class="hero-domain-tags">digital twins · validation frameworks · power systems · Python pipelines</div><div class="arrow">View projects &rarr;</div></a>
-<a class="hero-domain" data-f="digital-transformation" onclick="goFilter('digital-transformation');return false" href="#projects"><h3>Digital Transformation & BA</h3><div class="hero-domain-count" id="hd-dig-count">1 project</div><div class="hero-domain-tags">BPMN · requirements · evaluation · implementation planning</div><div class="arrow">View projects &rarr;</div></a>
+<a class="hero-domain" data-f="digital-transformation" onclick="goFilter('digital-transformation');return false" href="#projects"><h3>Digital Transformation & BA</h3><div class="hero-domain-count" id="hd-dig-count">1 project</div><div class="hero-domain-tags">business process improvement · stakeholder engagement · solution design & evaluation · implementation planning</div><div class="arrow">View projects &rarr;</div></a>
 </div>
 </section>
 
@@ -2725,7 +2725,7 @@ window.goFilter=function(cat){
 // Theme toggle — respect EmptyOS global light theme when user hasn't set a per-site override
 (function(){
   var saved=localStorage.getItem('p-theme');
-  var globalLight=/\btheme-(soft-light|light|paper|solar)\b/.test(document.documentElement.className);
+  var globalLight=/\btheme-soft-light\b/.test(document.documentElement.className);
   if(saved==='light' || (saved===null && globalLight))document.documentElement.classList.add('light');
   updateThemeIcon();
 })();
