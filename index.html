@@ -2314,6 +2314,18 @@ var EOS_UI = {
             var id = el.id.replace('tab-', '');
             el.classList.toggle('active', id === name);
         });
+        EOS_UI._initTabA11y();
+    },
+
+    // Make .eos-tab strips keyboard-navigable fleet-wide: role=tab + tabindex=0
+    // so the global Enter/Space delegate in eos.js activates them. Idempotent;
+    // called on DOMContentLoaded and after every switchTab (covers dynamic tabs).
+    _initTabA11y: function() {
+        document.querySelectorAll('.eos-tab').forEach(function(el) {
+            if (el.getAttribute('role') !== 'tab') el.setAttribute('role', 'tab');
+            if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+            el.setAttribute('aria-selected', el.classList.contains('active') ? 'true' : 'false');
+        });
     },
 
     // SVG Sparkline — inline trend chart
@@ -3314,7 +3326,7 @@ var EOS_UI = {
         if (!opts.onClick) cls += ' no-hover';
         var attrs = '';
         if (opts.id) attrs += ' id="' + esc(opts.id) + '"';
-        if (opts.onClick) attrs += ' onclick="' + opts.onClick.replace(/"/g, '&quot;') + '"';
+        if (opts.onClick) attrs += ' onclick="' + opts.onClick.replace(/"/g, '&quot;') + '" role="button" tabindex="0"';
         return '<div class="' + cls + '"' + attrs + '>' + parts.join('') + '</div>';
     },
 
@@ -6466,6 +6478,7 @@ function _eosAutoInit() {
     EOS_UI.initCloudConsent();
     EOS_UI.initDemoBanner();
     EOS_UI.initThinkStatus();
+    EOS_UI._initTabA11y();
     var p = location.pathname;
     var isHomeLike = p === '/' || p === '/hub/' || p === '/hub' ||
                      document.body && document.body.getAttribute('data-pwa-install') === 'true';
